@@ -1,8 +1,8 @@
 # apis-web
 
 ## Introduction
-apis-webは電力融通の開発や運用保守のためのWebサービス等に対して電力融通に関わる情報を  
-提供するソフトウェアである。  
+apis-webは電力融通の開発や運用保守のためのWebサービス等に対して電力融通に関わる情報を提供する  
+ソフトウェアである。  
 apis-webはコミュニケーションラインに接続された複数のapis-mainと共にクラスタを構築し、  
 Grid Master(GM)やapis-mainからDC/DC ConverterやBattery等のハードウェア情報や
 電力融通情報を取得する。    
