@@ -1,0 +1,77 @@
+{
+	// 起動時に引数 -conf path/to/this_file.json で指定する
+
+	// programId : プログラム識別文字列
+	//             ApisLoggerFormatter によりログの行頭に出力される
+	"programId" : "apis-web",
+
+	// communityId : コミュニティ識別文字列
+	//               clusterId および APIS バージョン文字列とともに暗号化のシードとして用いられる
+	"communityId" : "dev",
+	// clusterId : クラスタ識別文字列
+	//             communityId および APIS バージョン文字列とともに暗号化のシードとして用いられる
+	"clusterId" : "dev",
+
+	// security : EventBus メッセージ通信の SSL 化および Cluster Wide Map の暗号化設定
+	"security" : {
+		// enabled : 有効フラグ
+		//           EventBus メッセージ通信の SSL 化および Cluster Wide Map の暗号化を実施するか否か
+		//           デフォルト : false
+		"enabled" : true,
+		// pemKeyFile : 秘密鍵ファイルのパス
+		//              EventBus メッセージ通信の SSL 化に用いる
+		"pemKeyFile" : "./src/main/resources/sample-key.pem",
+		// pemCertFile : 証明書ファイルのパス
+		//               EventBus メッセージ通信の SSL 化に用いる
+		"pemCertFile" : "./src/main/resources/sample-cert.pem"
+	},
+
+	// budoEmulator : BudoEmulator 設定
+	//                融通情報やモード設定などの API のサービス設定
+	"budoEmulator" : {
+		// port : ポート
+		//        型 : Integer
+		//        デフォルト : 43830
+		"port" : 43830
+	},
+	// emulatorEmulator : EmulatorEmulator 設定
+	//                    ユニットデータ取得 API のサービス設定
+	"emulatorEmulator" : {
+		// port : ポート
+		//        型 : Integer
+		//        デフォルト : 43900
+		"port" : 43900
+	},
+	// apiServer : ApiServer 設定
+	//             その他の API のサービス設定
+	"apiServer" : {
+		// port : ポート
+		//        型 : Integer
+		//        デフォルト : 9999
+		"port" : 9999
+	},
+
+	// watchdog : watchdog 設定
+	"watchdog" : {
+		// enabled : 有効フラグ
+		//           watchdog 機能を実行するか否か
+		"enabled" : false,
+		// periodMsec : 実行周期
+		//              型 : Long
+		//              デフォルト : 5000L
+		"periodMsec" : 5000,
+		// host : watchdog サービスのホスト名
+		"host" : "0.0.0.0",
+		// port : watchdog サービスのポート
+		//        型 : Integer
+		//        必須
+		"port" : 12345,
+		// uri : watchdog サービスの URI
+		"uri" : "/restart",
+		// requestTimeoutMsec : HTTP リクエストのタイムアウト時間
+		//                      型 : Long
+		//                      デフォルト : 5000L
+		"requestTimeoutMsec" : 5000
+	}
+
+}
