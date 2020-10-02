@@ -24,4 +24,4 @@ DC/DC Converter、Battery RSOC等のハードウェア情報を取得し、任�
 
 
 ## Notice
-
+[Notice](https://github.com/oes-github/apis-web/blob/master/NOTICE.md)
