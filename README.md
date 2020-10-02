@@ -7,6 +7,7 @@ Grid Master(GM)やapis-mainからDC/DC ConverterやBattery等のハードウェ�
 Webサービスはそれらの情報をapis-webのWeb APIを利用することで取得することが可能である。  
 また、Debug用に電力融通やErrorを生成する機能も有する。  
 
+![apis-web](https://user-images.githubusercontent.com/71874910/94901565-c8e41980-04d1-11eb-9c38-c751a6acbdd9.PNG)
 
 ## Getting Started
 
