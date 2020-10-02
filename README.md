@@ -1,12 +1,11 @@
 # apis-web
 
 ## Introduction
-apis-webは電力融通の開発や運用保守のためのWebサービス(可視化サービスなど)に、電力融通に
-関わる情報を提供するソフトウェアである。apis-webはEthernet等のコミュニケーションラインに
-接続された複数のノード上のapis-mainから情報を取得するためにVert.x, Hazelcastのフレームワーク
-機能を用いてクラスタを構築する。そしてクラスタ内に存在するGrid Masterから全ノードの
-DC/DC Converter、Battery RSOC等のハードウェア情報を取得し、任意のノードから電力融通情報を
-取得する。また、Debug用に電力融通やErrorを生成する機能も有する。
+apis-webは電力融通の開発や運用保守のためのWebサービス等に対して電力融通に関わる情報を提供するソフトウェアである。  
+apis-webはコミュニケーションラインに接続された複数のapis-mainと共にクラスタを構築し、  
+Grid Masterやapis-mainからDC/DC ConverterやBattery等のハードウェア情報や電力融通情報を取得する。  
+Webサービスはそれらの情報をapis-webのWeb APIを利用することで取得することが可能である。  
+また、Debug用に電力融通やErrorを生成する機能も有する。  
 
 
 ## Getting Started
