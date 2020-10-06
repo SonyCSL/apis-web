@@ -152,20 +152,20 @@ apis-webは起動時にHazelcastと呼ばれるVert.xフレームワークが使
 -----------------
 ・Budo EmulatorはGrid Masterやノードに対して以下の情報取得や電力融通Mode設定、Shutdown処理を行う。(Global電力融通Modeは全ノードに対して、Local電力融通Modeは個別ノードに対して行うMode設定である。)
 
--Grid Master : クラスタ内の全ノードリスト取得
--任意ノード : 電力融通情報取得、Global電力融通Modeステータス取得、Global 電力融通Mode設定
--個別ノード : Local電力融通Modeステータス取得、Local電力融通Mode設定、個別Shutdown
--全ノード : 全体Shutdown
+-Grid Master : クラスタ内の全ノードリスト取得  
+-任意ノード : 電力融通情報取得、Global電力融通Modeステータス取得、Global 電力融通Mode設定  
+-個別ノード : Local電力融通Modeステータス取得、Local電力融通Mode設定、個別Shutdown  
+-全ノード : 全体Shutdown  
 
-・電力融通Modeは以下の4種類がある。
--Run(autonomous):  
- クラスタ内での電力融通生成を有効にする電力融通稼働時の標準Modeである。  
--Soft Stop(heteronomous):  
- 既存の電力融通は完了まで継続するが、新たな電力融通生成は行わないModeである。Deal Generatorで強制的に電力融通を生成することは可能なため主にDebug用途として使用されるModeである。  
--Force Stop(stop):  
- 既存の電力融通を止め、Deal Generatorの強制的な電力融通生成も含めて新たな電力融通生成も行わないModeである。不具合発生時など強制的にクラスタ内の電力融通を停止させる場合に使用されるModeである。  
--Manual(manual):  
- apis-mainの保護機能の影響を受けることなくDC/DC Converter等をManualで動作させるために使用されるDebug用のModeである。  
+・電力融通Modeは以下の4種類がある。  
+ -Run(autonomous):  
+   クラスタ内での電力融通生成を有効にする電力融通稼働時の標準Modeである。  
+ -Soft Stop(heteronomous):  
+   既存の電力融通は完了まで継続するが、新たな電力融通生成は行わないModeである。Deal Generatorで強制的に電力融通を生成することは可能なため主にDebug用途として使用されるModeである。  
+ -Force Stop(stop):  
+   既存の電力融通を止め、Deal Generatorの強制的な電力融通生成も含めて新たな電力融通生成も行わないModeである。不具合発生時など強制的にクラスタ内の電力融通を停止させる場合に使用されるModeである。  
+ -Manual(manual):  
+   apis-mainの保護機能の影響を受けることなくDC/DC Converter等をManualで動作させるために使用されるDebug用のModeである。  
 
 <a id="anchor4-3"></a>
 **4.3.Emulator Emulator**
