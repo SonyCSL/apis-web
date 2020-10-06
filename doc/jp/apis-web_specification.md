@@ -330,17 +330,17 @@ Grid Masterから取得した各ノードのハードウェア情報等が空の
 実行中の正常系の情報を出力する際に用いられるLevelで、apis-webでは特に動作として重要なイベント処理を行った際に使われる。  
 API提供Port等。  
 
-4.CONFIG  
+4. CONFIG  
 設定に関するLog Levelであるがapis-webとしてはこのLevelの出力は行わない。    
 
-5.FINE  
+5. FINE  
 実行中の正常系の通常動作情報を出力する際に用いられるLevelである。  
 Grid Masterから取得した各ノードのハードウェア情報の取得件数等。  
 
-6.FINER  
+6. FINER  
 特定の処理についての開始及び終了の情報であるがapis-webとしてはこのLevelの出力は行わない。  
 
-7.FINEST  
+7. FINEST  
 実行中の正常系の通常動作情報を出力する際に用いられるLevelである。  
 例&gt; Vert.xのVerticle起動時等。  
 
