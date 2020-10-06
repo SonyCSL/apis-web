@@ -12,65 +12,65 @@
 
 [3.ソフトウェア構成](#anchor3)
 
-[3.1. ソフトウェアアーキテクチャ](#anchor3-1)
+&emsp;[3.1. ソフトウェアアーキテクチャ](#anchor3-1)
 
-[3.2.ソフトウェア構成](#anchor3-2)
+&emsp;[3.2.ソフトウェア構成](#anchor3-2)
 
 [4.機能説明](#anchor4)
 
-[4.1.クラスタ構築](#anchor4-1)
+&emsp;[4.1.クラスタ構築](#anchor4-1)
 
-[4.2.Budo Emulator](#anchor4-2)
+&emsp;[4.2.Budo Emulator](#anchor4-2)
 
-[4.3.Emulator Emulator](#anchor4-3)
+&emsp;[4.3.Emulator Emulator](#anchor4-3)
 
-[4.4.Api Server](#anchor4-4)
+&emsp;[4.4.Api Server](#anchor4-4)
 
-[4.4.1.Deal Generator](#anchor4-4-1)
+&emsp;&emsp;[4.4.1.Deal Generator](#anchor4-4-1)
 
-[4.4.2.Error Generator](#anchor4-4-2)
+&emsp;&emsp;[4.4.2.Error Generator](#anchor4-4-2)
 
-[4.4.3.Log Configurator](#anchor4-4-3)
+&emsp;&emsp;[4.4.3.Log Configurator](#anchor4-4-3)
 
 [5.通信仕様について](#anchor5)
 
-[5.1.Web API](#anchor5-1)
+&emsp;[5.1.Web API](#anchor5-1)
 
-[5.2.apis-web – Grid Master間通信](#anchor5-2)
+&emsp;[5.2.apis-web – Grid Master間通信](#anchor5-2)
 
 [6.収集情報](#anchor6)
 
-[6.1.Emulator Emulator /get/log](#anchor6-1)
+&emsp;[6.1.Emulator Emulator /get/log](#anchor6-1)
 
-[6.2.Budo Emulator /deals](#anchor6-2)
+&emsp;[6.2.Budo Emulator /deals](#anchor6-2)
 
 [7.設定ファイルについて](#anchor7)
 
-[7.1.config.json](#anchor7-1)
+&emsp;[7.1.config.json](#anchor7-1)
 
-[7.2.cluster.xml](#anchor7-2)
+&emsp;[7.2.cluster.xml](#anchor7-2)
 
-[7.3.logging.properties](#anchor7-3)
+&emsp;[7.3.logging.properties](#anchor7-3)
 
-[7.4.start.sh](#anchor7-4)
+&emsp;[7.4.start.sh](#anchor7-4)
 
-[7.5.stop-kill.sh](#anchor7-5)
+&emsp;[7.5.stop-kill.sh](#anchor7-5)
 
-[7.6.key.pem](#anchor7-6)
+&emsp;[7.6.key.pem](#anchor7-6)
 
-[7.7.cert.pem](#anchor7-7)
+&emsp;[7.7.cert.pem](#anchor7-7)
 
 [8.Log出力](#anchor8)
 
-[8.1.Log Level](#anchor8-1)
+&emsp;[8.1.Log Level](#anchor8-1)
 
-[8.2.APIS動作Log出力先](#anchor8-2)
+&emsp;[8.2.APIS動作Log出力先](#anchor8-2)
 
 [9.異常処理](#anchor9)
 
 [10.セキュリティ](#anchor10)
 
-[10.1.APIS間通信セキュリティ](#anchor10-1)
+&emsp;[10.1.APIS間通信セキュリティ](#anchor10-1)
 
 [11.プライバシー](#anchor11)
 
@@ -78,9 +78,9 @@
 
 [13.動作環境](#anchor13)
 
-[13.1.ハードウェア要求](#anchor13-1)
+&emsp;[13.1.ハードウェア要求](#anchor13-1)
 
-[13.2.OS要求](#anchor13-2)
+&emsp;[13.2.OS要求](#anchor13-2)
 
 <a id="anchor1"></a>
 **1.用語・略語**
