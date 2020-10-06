@@ -162,16 +162,18 @@ apis-webは起動時にHazelcastと呼ばれるVert.xフレームワークが使
 
 ・電力融通Modeは以下の4種類がある。  
 &emsp; -  Run(autonomous):  
-&emsp;   クラスタ内での電力融通生成を有効にする電力融通稼働時の標準Modeである。  
+&emsp;&emsp;クラスタ内での電力融通生成を有効にする電力融通稼働時の標準Modeである。  
 
 &emsp; -  Soft Stop(heteronomous):  
-&emsp;   既存の電力融通は完了まで継続するが、新たな電力融通生成は行わないModeである。Deal Generatorで強制的に電力融通を生成することは可能なため主にDebug用途として使用されるModeである。  
+&emsp;&emsp;既存の電力融通は完了まで継続するが、新たな電力融通生成は行わないModeである。
+&emsp;&emsp;Deal Generatorで強制的に電力融通を生成することは可能なため主にDebug用途として使用されるModeである。  
 
 &emsp; -  Force Stop(stop):  
-&emsp;   既存の電力融通を止め、Deal Generatorの強制的な電力融通生成も含めて新たな電力融通生成も行わないModeである。不具合発生時など強制的にクラスタ内の電力融通を停止させる場合に使用されるModeである。  
+&emsp;&emsp;既存の電力融通を止め、Deal Generatorの強制的な電力融通生成も含めて新たな電力融通生成も行わないModeである。
+&emsp;&emsp;不具合発生時など強制的にクラスタ内の電力融通を停止させる場合に使用されるModeである。  
 
-&emsp;   -Manual(manual):  
-&emsp;   apis-mainの保護機能の影響を受けることなくDC/DC Converter等をManualで動作させるために使用されるDebug用のModeである。  
+&emsp; -  Manual(manual):  
+&emsp;&emsp;apis-mainの保護機能の影響を受けることなくDC/DC Converter等をManualで動作させるために使用されるDebug用のModeである。  
 
 <a id="anchor4-3"></a>
 **4.3.Emulator Emulator**
