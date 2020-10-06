@@ -18,6 +18,7 @@ Webサービスはそれらの情報をapis-webのWeb APIを利用すること�
 
 
 ## Documentation
+[Documentation](https://github.com/SonyCSL/apis-web/blob/master/doc/jp/apis-web_specification.md)
 
 
 
