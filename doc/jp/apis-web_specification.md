@@ -118,7 +118,7 @@ apis-webは電力融通の開発や運用保守のためのWebサービス(可�
 図3-1はapis-webのソフトウェアアーキテクチャを示した図である。Linux OS上にJDK(Java Development Kit)、その上にイベントドリブンの負荷分散プラットフォームであるVert.xとインメモリ分散コンピューティングのHazelcastの2つのフレームワークを使用してapis-webを動作させている。 (動作確認済みOSSソフトウェアのVersionは12. OSSライセンス参照)
 
 <img src="media/media/image5.png" style="width:2.20833in;height:1.96149in" />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 図3-1</p>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;図3-1
 
 <a id="anchor3-2"></a>
 **3.2ソフトウェア構成**
@@ -139,7 +139,7 @@ Main Controller等のWebアプリケーションに対し、各apis-mainによ�
 ・Log Configurator : apis-mainのコミュニケーションラインへのUDP Log出力のLevelを動的に変更するための Web API  
 
 <img src="media/media/image6.png" style="width:4.125in;height:1.92865in" />
-<p align="center">図3-2</p>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;図3-2
 
 <a id="anchor4"></a>
 **4.機能説明**
