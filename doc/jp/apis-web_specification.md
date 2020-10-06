@@ -183,13 +183,13 @@ Deal GenerationのWeb APIを実行するとブラウザ上に下記のWindowが�
 <img src="media/media/image7.png" style="width:4.92677in;height:2.05833in" />
 
 <a id="anchor4-4-2"></a>
-**4.4.2.Error Generator**
+**4.4.2.Error Generator**  
 Error GenerationのWeb APIを実行するとブラウザ上に下記のWindowが開きErrorのカテゴリを選択後”Generate”ボタンを押すことでクラスタ内に選択したError処理を生成することができる。この機能は主にDebug等で用いられる。
 
 <img src="media/media/image8.png" style="width:5.9in;height:0.325in" />
 
 <a id="anchor4-4-3"></a>
-**4.4.3.Log Configurator**
+**4.4.3.Log Configurator**  
 コミュニケーションラインに出力されるapis-mainのUDP Logは情報漏洩や通信のトラフィック負荷を考慮してapis-mainのlogging.properties設定で出力Levelを制限されているか、出力がOFFとなっている。Debugの目的で一時的にapis-mainのUDP Logの出力Levelを変更する場合にはこの機能を使うことで動的に変更することができる。(この機能の効果は一時的でapis-main再起動後のUDP出力Levelはapis-main自身のlogging.properties設定に従う。)
 
 <img src="media/media/image9.png" style="width:2.85in;height:0.41003in" />
