@@ -105,6 +105,7 @@
 apis-webは電力融通の開発や運用保守のためのWebサービス(可視化サービスなど)に、電力融通に関わる情報を提供するソフトウェアである。apis-webはEthernet等のコミュニケーションラインに接続された複数のノード上のapis-mainから情報を取得するためにVert.x, Hazelcastのフレームワーク機能を用いてクラスタを構築する。そしてクラスタ内に存在するGrid Masterから全ノードのDC/DC Converter、Battery RSOC等のハードウェア情報を取得し、任意のノードから電力融通情報を取得する。また、Debug用に電力融通やErrorを生成する機能も有する。
 
 <img src="media/media/image1.png" style="width:5.25in;height:1.93538in" />
+<p align="center">図2-1</p>
 
 <a id="anchor3"></a>
 **3.ソフトウェア構成**
@@ -117,6 +118,7 @@ apis-webは電力融通の開発や運用保守のためのWebサービス(可�
 図3-1はapis-webのソフトウェアアーキテクチャを示した図である。Linux OS上にJDK(Java Development Kit)、その上にイベントドリブンの負荷分散プラットフォームであるVert.xとインメモリ分散コンピューティングのHazelcastの2つのフレームワークを使用してapis-webを動作させている。 (動作確認済みOSSソフトウェアのVersionは12. OSSライセンス参照)
 
 <img src="media/media/image5.png" style="width:2.20833in;height:1.96149in" />
+<p align="center">図3-1</p>
 
 <a id="anchor3-2"></a>
 **3.2ソフトウェア構成**
@@ -137,6 +139,7 @@ Main Controller等のWebアプリケーションに対し、各apis-mainによ�
 ・Log Configurator : apis-mainのコミュニケーションラインへのUDP Log出力のLevelを動的に変更するための Web API  
 
 <img src="media/media/image6.png" style="width:4.125in;height:1.92865in" />
+<p align="center">図3-2</p>
 
 <a id="anchor4"></a>
 **4.機能説明**
