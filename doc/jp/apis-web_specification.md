@@ -278,20 +278,20 @@ apis-webを起動させるスクリプトファイル。OS起動時の自動実�
 java -XX:OnOutOfMemoryError="'kill -KILL %p'" -Duser.timezone=Asia/Tokyo -Djava.util.logging.config.file=./logging.properties -jar ./apis-web-2.23.0-a01-fat.jar -conf ./config.json -cp ./ -cluster -cluster-host 192.168.0.1 &
 
 “java”の後の引き数の意味を以下に説明する。  
--XX:OnOutOfMemoryError="'kill -KILL %p'"  　
- メモリ不足(OOM Error)発生時プロセスをKillするオプション。  
--Duser.timezone=Asia/Tokyo  
- Timezone設定。  
--Djava.util.logging.config.file=./logging.properties  
- Log構成ファイルを指定するオプション。  
--jar ./apis-web-2.23.0-a01-fat.jar  
- JARファイルの中にカプセル化されたプログラムの実行を指定するオプション。  
--conf ./config.json  
- 構成ファイルを指定するオプション。  
--cp ./  
- cluseter.xmlファイルの位置を指定するオプション。  
--cluster-host 192.168.0.1 &  
- 自身のIP Addressを指定するオプション。
+&emsp;-XX:OnOutOfMemoryError="'kill -KILL %p'"  
+&emsp;&emsp; メモリ不足(OOM Error)発生時プロセスをKillするオプション。  
+&emsp;-Duser.timezone=Asia/Tokyo  
+&emsp;&emsp;Timezone設定。  
+&emsp;-Djava.util.logging.config.file=./logging.properties  
+&emsp;&emsp;Log構成ファイルを指定するオプション。  
+&emsp;-jar ./apis-web-2.23.0-a01-fat.jar  
+&emsp;&emsp;JARファイルの中にカプセル化されたプログラムの実行を指定するオプション。  
+&emsp;-conf ./config.json  
+&emsp;&emsp;構成ファイルを指定するオプション。  
+&emsp;-cp ./  
+&emsp;&emsp;cluseter.xmlファイルの位置を指定するオプション。  
+&emsp;-cluster-host 192.168.0.1 &  
+&emsp;&emsp;自身のIP Addressを指定するオプション。
 
 <a id="anchor7-5"></a>
 **7.5.stop-kill.sh**
