@@ -1,4 +1,5 @@
 **apis-web仕様書**
+====================
 
 **Rev 0.64**
 
@@ -319,29 +320,29 @@ Log出力にはJava標準APIのjava.util.loggingを使っており以下の7つ�
 1. SEVERE  
   実行中にErrorが発生した場合に使われるLevelである。  
   このLevelのLogが出力された場合には何等かの不具合が発生したと考えられる。  
-  &lt;例&gt; 提供していないWeb API(URL)へのAccessがあった場合等。
+  提供していないWeb API(URL)へのAccessがあった場合等。
 
-2. WARNING  
-  実行中にErrorではないが期待された動作でないため警告として知らせる目的で使われるLevelである。
-  &lt;例&gt; Grid Masterから取得した各ノードのハードウェア情報等が空の場合。
+2. WARNING    
+  実行中にErrorではないが期待された動作でないため警告として知らせる目的で使われるLevelである。  
+  Grid Masterから取得した各ノードのハードウェア情報等が空の場合。  
 
 3. INFO  
-  実行中の正常系の情報を出力する際に用いられるLevelで、apis-webでは特に動作として重要なイベント処理を行った際に使われる。
-  &lt;例&gt; API提供Port等。
+  実行中の正常系の情報を出力する際に用いられるLevelで、apis-webでは特に動作として重要なイベント処理を行った際に使われる。  
+  API提供Port等。  
 
 4.CONFIG  
-　設定に関するLog Levelであるがapis-webとしてはこのLevelの出力は行わない。  
+　設定に関するLog Levelであるがapis-webとしてはこのLevelの出力は行わない。    
 
 5.FINE  
   実行中の正常系の通常動作情報を出力する際に用いられるLevelである。  
-  &lt;例&gt; Grid Masterから取得した各ノードのハードウェア情報の取得件数等。  
+  Grid Masterから取得した各ノードのハードウェア情報の取得件数等。  
 
 6.FINER  
-　特定の処理についての開始及び終了の情報であるがapis-webとしてはこのLevelの出力は行わない。
+　特定の処理についての開始及び終了の情報であるがapis-webとしてはこのLevelの出力は行わない。  
 
 7.FINEST  
   実行中の正常系の通常動作情報を出力する際に用いられるLevelである。  
-  &lt;例&gt; Vert.xのVerticle起動時等。  
+  例&gt; Vert.xのVerticle起動時等。  
 
 <a id="anchor8-2"></a>
 **8.2.APIS動作Log出力先**
