@@ -12,7 +12,19 @@ Webサービスはそれらの情報をapis-webのWeb APIを利用すること�
 ![apis-web](https://user-images.githubusercontent.com/71874910/94901565-c8e41980-04d1-11eb-9c38-c751a6acbdd9.PNG)
 
 ## Getting Started
+```bash
 
+$ mkdir apis-common
+$ cd apis-common
+$ git clone https://github.com/SonyCSL/apis-common.git
+$ mvn install
+$ cd ..
+$ mkdir apis-main
+$ cd apis-main
+$ git cone https://github.com/SonyCSL/apis-web.git
+$ mvn package
+
+```
 
 ## Usage
 
