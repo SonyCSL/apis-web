@@ -19,8 +19,8 @@ $ cd apis-common
 $ git clone https://github.com/SonyCSL/apis-common.git
 $ mvn install
 $ cd ..
-$ mkdir apis-main
-$ cd apis-main
+$ mkdir apis-web
+$ cd apis-web
 $ git cone https://github.com/SonyCSL/apis-web.git
 $ mvn package
 
