@@ -26,7 +26,7 @@ $ cd apis-web
 $ mvn package
 $ cd ../
 $ mkdir apis-web_exe
-$ cp ./apis-web/target/apis-main-*-fat.jar ./apis-web_exe
+$ cp ./apis-web/target/apis-web-*-fat.jar ./apis-web_exe
 $ cp ./apis-web/setting_files/* ./apis-web_exe
 ```
 
