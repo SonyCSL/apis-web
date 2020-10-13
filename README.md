@@ -35,14 +35,14 @@ Set the following file parameters in the apis-web_exe at least to suit your envi
 Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](#anchor1) for more information.
 
 &emsp;config.json   
-&emsp;&emsp;&emsp;- communityId    
-&emsp;&emsp;&emsp;- clusterId    
+&emsp;&emsp;&emsp;- communityId   &emsp;(default : oss_communityId)  
+&emsp;&emsp;&emsp;- clusterId     &emsp;(default : oss_clusterId)  
 
 &emsp;cluster.xml  
-&emsp;&emsp;&emsp;- \<interface\>  
+&emsp;&emsp;&emsp;- \<interface\>  &emsp;(default : 127.0.0.1)
 
 &emsp;start.sh  
-&emsp;&emsp;&emsp;- java arguments
+&emsp;&emsp;&emsp;- java arguments &emsp;(default : 127.0.0.1) 
 
 
 ## Running
