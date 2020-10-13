@@ -35,9 +35,8 @@ Set the following file parameters in the apis-web_exe at least to suit your envi
 Refer to "Chapter 6, About Configuration Files" in the [apis-main_specification](#anchor1) for more information.
 
 &emsp;config.json   
-&emsp;&emsp;&emsp;- unitId        
-&emsp;&emsp;&emsp;- unitName    
-&emsp;&emsp;&emsp;- systemType    
+&emsp;&emsp;&emsp;- communityId    
+&emsp;&emsp;&emsp;- clusterId    
 
 &emsp;policy.json    
 &emsp;&emsp;&emsp;- memberUnitIds  
