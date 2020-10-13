@@ -1,0 +1,35 @@
+{
+	"#" : "start vertx or fat jar with option '-conf path/to/config_file.json'",
+
+	"programId" : "apis-web",
+
+	"communityId" : "oss_community",
+	"clusterId" : "oss_cluster",
+
+	"security" : {
+		"enabled" : true,
+		"pemKeyFile" : "./key.pem",
+		"pemCertFile" : "./cert.pem"
+	},
+
+	"budoEmulator" : {
+		"port" : 43830
+	},
+	"emulatorEmulator" : {
+		"port" : 43900
+	},
+	"apiServer" : {
+		"port" : 9999
+	},
+
+	"watchdog" : {
+		"enabled" : false,
+		"periodMsec" : 5000,
+		"host" : "localhost",
+		"port" : 12345,
+		"uri" : "/restart",
+		"requestTimeoutMsec" : 5000
+	},
+
+	"#" : "end"
+}
