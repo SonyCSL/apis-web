@@ -32,14 +32,11 @@ $ cp ./apis-web/setting_files/* ./apis-web_exe
 
 ## Parameter Setting
 Set the following file parameters in the apis-web_exe at least to suit your environment.   
-Refer to "Chapter 6, About Configuration Files" in the [apis-web_specification](#anchor1) for more information.
+Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](#anchor1) for more information.
 
 &emsp;config.json   
 &emsp;&emsp;&emsp;- communityId    
 &emsp;&emsp;&emsp;- clusterId    
-
-&emsp;policy.json    
-&emsp;&emsp;&emsp;- memberUnitIds  
 
 &emsp;cluster.xml  
 &emsp;&emsp;&emsp;- \<interface\>  
@@ -55,6 +52,7 @@ $ cd apis-web_exe
 $ bash start.sh
 ```
 
+<a id="anchor1"></a>
 ## Documentation
 &emsp;[apis-web_specification(JP)](https://github.com/SonyCSL/apis-web/blob/master/doc/jp/apis-web_specification.md)
 
