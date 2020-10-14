@@ -24,10 +24,6 @@ $ cd ../
 $ git cone https://github.com/SonyCSL/apis-web.git
 $ cd apis-web
 $ mvn package
-$ cd ../
-$ mkdir apis-web_exe
-$ cp ./apis-web/target/apis-web-*-fat.jar ./apis-web_exe
-$ cp ./apis-web/setting_files/* ./apis-web_exe
 ```
 
 ## Parameter Setting
@@ -48,7 +44,7 @@ Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](
 ## Running
 
 ```bash
-$ cd apis-web_exe
+$ cd exe
 $ bash start.sh
 ```
 
