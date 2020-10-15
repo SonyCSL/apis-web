@@ -35,12 +35,12 @@ Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](
 &emsp;&emsp;&emsp;- clusterId     &emsp;(default : oss_clusterId)  
 
 &emsp;cluster.xml  
-&emsp;&emsp;&emsp;- \<member\>  &emsp;(default : 127.0.0.1)
-&emsp;&emsp;&emsp;- \<interface\>  &emsp;(default : 127.0.0.1)
+&emsp;&emsp;&emsp;- \<member\>  &emsp;(default : 127.0.0.1)  
+&emsp;&emsp;&emsp;- \<interface\>  &emsp;(default : 127.0.0.1)  
 
 &emsp;start.sh  
 &emsp;&emsp;&emsp;-conf &emsp; (default : ./config.json)  
-&emsp;&emsp;&emsp;-cluster-host &emsp; (default : 127.0.0.1)  
+&emsp;&emsp;&emsp;-cluster-host &emsp; (default : 127.0.0.1)    
 
 
 ## Running
