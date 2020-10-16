@@ -275,11 +275,11 @@ apis-webを起動させるスクリプトファイル。OS起動時の自動実�
 
 以下にstart.sh内でのapis-webを起動させるコマンドを示す。
 
-java -XX:OnOutOfMemoryError="'kill -KILL %p'" -Duser.timezone=Asia/Tokyo -Djava.util.logging.config.file=./logging.properties -jar ./apis-web-2.23.0-a01-fat.jar -conf ./config.json -cp ./ -cluster -cluster-host 192.168.0.1 &
+java -Djava.net.preferIPv4Stack=true -Duser.timezone=Asia/Tokyo -Djava.util.logging.config.file=./logging.properties -jar ./apis-web-2.23.0-a01-fat.jar -conf ./config.json -cp ./ -cluster -cluster-host 127.0.0.1 &
 
-“java”の後の引き数の意味を以下に説明する。  
-&emsp;-XX:OnOutOfMemoryError="'kill -KILL %p'"  
-&emsp;&emsp; メモリ不足(OOM Error)発生時プロセスをKillするオプション。  
+“java”の後の引き数の意味を以下に説明する。    
+&emsp;-Djava.net.preferIPv4Stack=true  
+&emsp;&emsp;IPv4アドレスにバインドして起動するオプション  
 &emsp;-Duser.timezone=Asia/Tokyo  
 &emsp;&emsp;Timezone設定。  
 &emsp;-Djava.util.logging.config.file=./logging.properties  
@@ -290,7 +290,7 @@ java -XX:OnOutOfMemoryError="'kill -KILL %p'" -Duser.timezone=Asia/Tokyo -Djava.
 &emsp;&emsp;構成ファイルを指定するオプション。  
 &emsp;-cp ./  
 &emsp;&emsp;cluseter.xmlファイルの位置を指定するオプション。  
-&emsp;-cluster-host 192.168.0.1 &  
+&emsp;-cluster-host 127.0.0.1 &  
 &emsp;&emsp;自身のIP Addressを指定するオプション。
 
 <a id="anchor7-5"></a>
