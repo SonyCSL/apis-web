@@ -279,7 +279,7 @@ java -Djava.net.preferIPv4Stack=true -Duser.timezone=Asia/Tokyo -Djava.util.logg
 
 “java”の後の引き数の意味を以下に説明する。    
 &emsp;-Djava.net.preferIPv4Stack=true  
-&emsp;&emsp;IPv4アドレスにバインドして起動するオプション  
+&emsp;&emsp;IPv4アドレスにバインドして起動するオプション。  
 &emsp;-Duser.timezone=Asia/Tokyo  
 &emsp;&emsp;Timezone設定。  
 &emsp;-Djava.util.logging.config.file=./logging.properties  
@@ -290,7 +290,7 @@ java -Djava.net.preferIPv4Stack=true -Duser.timezone=Asia/Tokyo -Djava.util.logg
 &emsp;&emsp;構成ファイルを指定するオプション。  
 &emsp;-cp ./  
 &emsp;&emsp;cluseter.xmlファイルの位置を指定するオプション。  
-&emsp;-cluster-host 127.0.0.1 &  
+&emsp;-cluster-host 127.0.0.1   
 &emsp;&emsp;自身のIP Addressを指定するオプション。
 
 <a id="anchor7-5"></a>
