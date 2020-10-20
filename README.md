@@ -29,6 +29,15 @@ $ cd apis-web
 $ mvn package
 ```
 
+## Running
+
+Here is how to run apis-web individually.  
+
+```bash
+$ cd exe
+$ bash start.sh
+```
+
 ## Parameter Setting
 Set the following file parameters in the exe folder as necessary.   
 Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](#anchor1) for more information.
@@ -45,15 +54,6 @@ Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](
 &emsp;&emsp;&emsp;-conf &emsp; (default : ./config.json)  
 &emsp;&emsp;&emsp;-cluster-host &emsp; (default : 127.0.0.1)    
 
-
-## Running
-
-Here is how to run apis-web individually.  
-
-```bash
-$ cd exe
-$ bash start.sh
-```
 
 <a id="anchor1"></a>
 ## Documentation
