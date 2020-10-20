@@ -48,6 +48,8 @@ Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](
 
 ## Running
 
+Here is how to run apis-web individually.  
+
 ```bash
 $ cd exe
 $ bash start.sh
