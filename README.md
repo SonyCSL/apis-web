@@ -12,8 +12,8 @@ Webサービスはそれらの情報をapis-webのWeb APIを利用すること�
 ![apis-web](https://user-images.githubusercontent.com/71874910/94901565-c8e41980-04d1-11eb-9c38-c751a6acbdd9.PNG)
 
 ## Installation
-
-Maven and JDK shall be installed in advance.
+Here is how to install apis-web individually.  
+Maven and JDK must be installed in advance.
 
 ```bash
 $ git clone https://github.com/SonyCSL/apis-bom.git
@@ -30,7 +30,7 @@ $ mvn package
 ```
 
 ## Parameter Setting
-Set the following file parameters in the exe folder at least to suit your environment.   
+Set the following file parameters in the exe folder as necessary.   
 Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](#anchor1) for more information.
 
 &emsp;config.json   
