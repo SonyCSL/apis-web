@@ -13,7 +13,7 @@ Webサービスはそれらの情報をapis-webのWeb APIを利用すること�
 
 ## Installation
 Here is how to install apis-web individually.  
-Maven and JDK must be installed in advance.
+git, maven, groovy and JDK must be installed in advance.
 
 ```bash
 $ git clone https://github.com/SonyCSL/apis-bom.git
