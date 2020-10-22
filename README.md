@@ -38,6 +38,15 @@ $ cd exe
 $ bash start.sh
 ```
 
+## Stopping
+
+Here is how to stop apis-web individually.  
+
+```bash
+$ cd exe
+$ bash stop.sh
+```
+
 ## Parameter Setting
 Set the following file parameters in the exe folder as necessary.   
 Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](#anchor1) for more information.
