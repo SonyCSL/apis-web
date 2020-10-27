@@ -16,13 +16,18 @@ def files = [
   [path:"verify.info", name:"verify.info", md5:"no"]
 ]
 
+def MD5 = 'md5sum'
+if ('type md5sum'.execute().waitFor() == 1 && 'type md5'.execute().waitFor() == 0) {
+  MD5 = 'md5 -r'
+}
+
 def outFile = new File("${outFileName}")
 outFile.withWriter { writer->
   files.each {
     if (it["md5"] == "yes") {
-      def execCommand = "md5 ${it["path"]}"
+      def execCommand = "${MD5} ${it["path"]}"
       def execResult = "${execCommand}".execute().text
-      def md5value = "${execResult}".split(/\s+/)[3]
+      def md5value = "${execResult}".split(/\s+/)[0]
       writer.write("${it["name"]}:md5hash:${md5value}\n")
     } else {
       writer.write("${it["name"]}:\n")
