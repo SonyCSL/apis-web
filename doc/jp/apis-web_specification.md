@@ -1,7 +1,7 @@
 **apis-web仕様書**
 ====================
 
-**Rev 0.66**
+**Rev 0.67**
 
 **目次**
 ========
@@ -130,12 +130,12 @@ apis-webは図3-2で示すように以下の3つのServiceを提供する。
 Main Controller等のWebアプリケーションに対してクラスタ内で発生した電力融通情報を提供し、apis-mainの全ノード及び個別ノードに対して電力融通の実行/停止等の設定変更を行うことが可能なServiceである。Main Controller等はapis-webから受け取った情報を元にクラスタ内の電力融通の状況を可視化する。(“Emulator”の名称はBudo情報の提供を模倣する機能から付けられた。)
 
 2. Emulator Emulator  
-Main Controller等のWebアプリケーションに対し、各apis-mainによって取得された全ノードのDC/DC ConverterやBattery等のハードウェア情報を提供するServiceである。(“Emulator Emulator”の名称は実機のハードウェア情報をMain Controller等のWebアプリケーションに提供するためのServiceを開発する際に、既に開発されていたDC/DCD ConverterやBattery等のハードウェアEmulatorが持つWeb APIを流用したことによりWebアプリケーション側から見るとEmulatorを模すServiceになったことからEmulator Emulatorと付けられた。)
+Main Controller等のWebアプリケーションに対し、各apis-mainによって取得された全ノードのDC/DC ConverterやBattery等のハードウェア情報を提供するServiceである。(“Emulator Emulator”の名称は実機のハードウェア情報をMain Controller等のWebアプリケーションに提供するためのServiceを開発する際に、既に開発されていたDC/DC ConverterやBattery等のハードウェアEmulatorが持つWeb APIを流用したことによりWebアプリケーション側から見るとEmulatorを模すServiceになったことからEmulator Emulatorと付けられた。)
 
 3. Api Server  
 主にDebug等の目的で以下のWeb APIを提供するService である。  
 ・Deal Generator : 意図的に電力融通の実行命令をクラスタ内に生成するためのWeb API  
-・Error Generator : 任意のError処理命令をクラスタ内に生成するためのWeb API  
+・Error Generator : 任意のError処理命令をクラスタ内に生成するためのWeb API 
 ・Log Configurator : apis-mainのコミュニケーションラインへのUDP Log出力のLevelを動的に変更するための Web API  
 
 <img src="media/media/image6.png" style="width:4.125in;height:1.92865in" />
@@ -238,7 +238,7 @@ Emulator Emulator が処理するWeb API ”/get/log” で取得可能な電力
 
 Budo Emulator が処理するWeb API ”/deals” で取得可能な電力融通情報は以下である。これらの情報を1セットとしてその時点で実施されている電力融通の数分の情報を取得できる。
 
-<table><thead><tr class="header"><td>unitId</td><td>ノード識別ID</td></tr></thead><tbody><tr class="odd"><td>negotiationId</td><td>電力融通交渉ID</td></tr><tr class="even"><td>requestUnitId</td><td>電力融通をRequestしたノードID</td></tr><tr class="odd"><td>acceptUnitId</td><td>電力融通をAcceptしたノードID</td></tr><tr class="even"><td>requestDateTime</td><td>電力融通をRequestした日時</td></tr><tr class="odd"><td>acceptDateTime</td><td>電力融通をAcceptした日時</td></tr><tr class="even"><td>requestPointPerWh</td><td>Request側が提示した1Wh当たりのポイント</td></tr><tr class="odd"><td>acceptPontPerWh</td><td>Accept側が提示した1Wh当たりのポイント</td></tr><tr class="even"><td>requestDealGridCurrentA</td><td>Request側が提示した融通の電流値</td></tr><tr class="odd"><td>acceptDealGridCurrentA</td><td>Accept側が提示した融通の電流値</td></tr><tr class="even"><td>type</td><td>電力融通Requestのタイプ(充電/放電)</td></tr><tr class="odd"><td>chargeUnitId</td><td>充電側のノードID</td></tr><tr class="even"><td>dischargeUnitId</td><td>放電側のノードID</td></tr><tr class="odd"><td>pointPerWh</td><td>実際の電力融通時の1Wh当たりのポイント</td></tr><tr class="even"><td>chargeUnitEfficientGridVoltageV</td><td>充電側ノードの効率が良いGrid電圧</td></tr><tr class="odd"><td>dischargeUnitEfficientGridVoltageV</td><td>放電側ノードの効率が良いGrid電圧</td></tr><tr class="even"><td>dealGridCurrentA</td><td>電力融通時電流値(A)</td></tr><tr class="odd"><td>requestAmountWh</td><td>Request側が提示した電力量</td></tr><tr class="even"><td>acceptAmountWh</td><td>Accept側が提示した電力量</td></tr><tr class="odd"><td>dealAmountWh</td><td>電力融通時電力量(Wh)</td></tr><tr class="even"><td>dealId</td><td>電力融通情報に付与されたID</td></tr><tr class="odd"><td>createDateTime</td><td>電力融通の電力融通情報が作られた日時</td></tr><tr class="even"><td><p>compensationTargetVoltage</p><p>ReferenceGridCurrentA</p></td><td>電圧Referenceを担っているノードの電流補正のターゲット値 (A)</td></tr><tr class="odd"><td>activateDateTime</td><td>Constant Voltageノード側の起動を開始した日時</td></tr><tr class="even"><td>rampUpDateTime</td><td>DC Gridの電圧Ramp Upが完了した日時</td></tr><tr class="odd"><td>warmUpDateTime</td><td>Constant Currentノード側を起動した日時</td></tr><tr class="even"><td><p>dischargeUnitCompensated</p><p>GridCurrentA</p></td><td>電流補正後の放電電流 (A)</td></tr><tr class="odd"><td><p>chargeUnitCompensated</p><p>GridCurrentA</p></td><td>電流補正後の充電電流 (A)</td></tr><tr class="even"><td>startDateTime</td><td>実際の電力融通を開始した日時</td></tr><tr class="odd"><td>cumulateDateTime</td><td>実際に電力融通した電力を積算した日時</td></tr><tr class="even"><td>cumulateAmountWh</td><td>実際に電力融通した総電力量 (Wh)</td></tr><tr class="odd"><td>stopDateTime</td><td>実際の電力融通を停止した日時</td></tr><tr class="even"><td>deactiveateDateTime</td><td>電力融通後の処理が完了した日時</td></tr></tbody></table>
+<table><thead><tr class="header"><td>unitId</td><td>ノード識別ID</td></tr></thead><tbody><tr class="odd"><td>negotiationId</td><td>電力融通交渉ID</td></tr><tr class="even"><td>requestUnitId</td><td>電力融通をRequestしたノードID</td></tr><tr class="odd"><td>acceptUnitId</td><td>電力融通をAcceptしたノードID</td></tr><tr class="even"><td>requestDateTime</td><td>電力融通をRequestした日時</td></tr><tr class="odd"><td>acceptDateTime</td><td>電力融通をAcceptした日時</td></tr><tr class="even"><td>requestPointPerWh</td><td>Request側が提示した1Wh当たりのポイント</td></tr><tr class="odd"><td>acceptPontPerWh</td><td>Accept側が提示した1Wh当たりのポイント</td></tr><tr class="even"><td>requestDealGridCurrentA</td><td>Request側が提示した融通の電流値</td></tr><tr class="odd"><td>acceptDealGridCurrentA</td><td>Accept側が提示した融通の電流値</td></tr><tr class="even"><td>type</td><td>電力融通Requestのタイプ(充電/放電)</td></tr><tr class="odd"><td>chargeUnitId</td><td>充電側のノードID</td></tr><tr class="even"><td>dischargeUnitId</td><td>放電側のノードID</td></tr><tr class="odd"><td>pointPerWh</td><td>実際の電力融通時の1Wh当たりのポイント</td></tr><tr class="even"><td>chargeUnitEfficientGridVoltageV</td><td>充電側ノードの効率が良いGrid電圧</td></tr><tr class="odd"><td>dischargeUnitEfficientGridVoltageV</td><td>放電側ノードの効率が良いGrid電圧</td></tr><tr class="even"><td>dealGridCurrentA</td><td>電力融通時電流値(A)</td></tr><tr class="odd"><td>requestAmountWh</td><td>Request側が提示した電力量</td></tr><tr class="even"><td>acceptAmountWh</td><td>Accept側が提示した電力量</td></tr><tr class="odd"><td>dealAmountWh</td><td>電力融通時電力量(Wh)</td></tr><tr class="even"><td>dealId</td><td>電力融通情報に付与されたID</td></tr><tr class="odd"><td>createDateTime</td><td>電力融通の電力融通情報が作られた日時</td></tr><tr class="even"><td><p>compensationTargetVoltage</p><p>ReferenceGridCurrentA</p></td><td>電圧Referenceを担っているノードの電流補正のターゲット値 (A)</td></tr><tr class="odd"><td>activateDateTime</td><td>Constant Voltageノード側の起動を開始した日時</td></tr><tr class="even"><td>rampUpDateTime</td><td>DC Gridの電圧Ramp Upが完了した日時</td></tr><tr class="odd"><td>warmUpDateTime</td><td>Constant Currentノード側を起動した日時</td></tr><tr class="even"><td><p>dischargeUnitCompensated</p><p>GridCurrentA</p></td><td>電流補正後の放電電流 (A)</td></tr><tr class="odd"><td><p>chargeUnitCompensated</p><p>GridCurrentA</p></td><td>電流補正後の充電電流 (A)</td></tr><tr class="even"><td>startDateTime</td><td>実際の電力融通を開始した日時</td></tr><tr class="odd"><td>cumulateDateTime</td><td>実際に電力融通した電力を積算した日時</td></tr><tr class="even"><td>cumulateAmountWh</td><td>実際に電力融通した総電力量 (Wh)</td></tr><tr class="odd"><td>stopDateTime</td><td>実際の電力融通を停止した日時</td></tr><tr class="even"><td>deactivateDateTime</td><td>電力融通後の処理が完了した日時</td></tr></tbody></table>
 
 <a id="anchor7"></a>
 **7.設定ファイルについて**
@@ -252,7 +252,7 @@ apis-webには複数の設定ファイルや鍵ファイル等が存在する。
 
 json形式のファイルでapis-webの基本情報を設定する。起動時に一度だけ読み込まれるためパラメータを変更した場合はapis-webの再起動が必要となる。
 
-<table><thead><tr class="header"><td>programId</td><td>プログラム識別文字列</td></tr></thead><tbody><tr class="odd"><td>communityId</td><td>コミュニティ識別文字列で1つ以上のクラスタをまとめる上位概念のID、clusterId及びAPIS Version文字列と共に暗号化のSeedとして用いられる</td></tr><tr class="even"><td>clusterId</td><td><p>クラスタ識別文字列</p><p>comminityId及びAPIS Version文字列と共に暗号化のSeedとして用いられる</p></td></tr><tr class="odd"><td>security.enabled</td><td>共有メモリ暗号化とEvent Bus SSL化の有効/無効設定</td></tr><tr class="even"><td>security.pemKeyFile</td><td>Event Bus SSL化に使われる秘密鍵</td></tr><tr class="odd"><td>security.pemCertFile</td><td>Event Bus SSL化に使われる証明書</td></tr><tr class="even"><td>bodoEmulator.port</td><td>Budo Emulator用Port番号 Port = 43830</td></tr><tr class="odd"><td>emulatorEmulator.port</td><td>Emulator Emulator用 Port番号 Port = 43900</td></tr><tr class="even"><td>apiServer.port</td><td>Generate Deal, Generate Error 要Port番号 Port = 9999</td></tr><tr class="odd"><td>watchdog.enabled</td><td>APIS Alive情報有効無効設定</td></tr><tr class="even"><td>watchdog.periodMsec</td><td>Watch Dog Reset周期　(ms)</td></tr><tr class="odd"><td>watchdog.host</td><td>Watch DogがperiodMsec間隔でAccessするIP Address</td></tr><tr class="even"><td>watchdog.port</td><td>Watch DogがperiodMsec間隔でAccessするPort番号</td></tr><tr class="odd"><td>watchdog.uri</td><td>Watch DogサービスのURI</td></tr><tr class="even"><td><p>watchdog.requestTimeout</p><p>Msec</p></td><td>Watch DogのTimeout時間(ms)</td></tr></tbody></table>
+<table><thead><tr class="header"><td>programId</td><td>プログラム識別文字列</td></tr></thead><tbody><tr class="odd"><td>communityId</td><td>コミュニティ識別文字列で1つ以上のクラスタをまとめる上位概念のID、clusterId及びAPIS Version文字列と共に暗号化のSeedとして用いられる</td></tr><tr class="even"><td>clusterId</td><td><p>クラスタ識別文字列</p><p>communityId及びAPIS Version文字列と共に暗号化のSeedとして用いられる</p></td></tr><tr class="odd"><td>security.enabled</td><td>共有メモリ暗号化とEvent Bus SSL化の有効/無効設定</td></tr><tr class="even"><td>security.pemKeyFile</td><td>Event Bus SSL化に使われる秘密鍵</td></tr><tr class="odd"><td>security.pemCertFile</td><td>Event Bus SSL化に使われる証明書</td></tr><tr class="even"><td>bodoEmulator.port</td><td>Budo Emulator用Port番号 Port = 43830</td></tr><tr class="odd"><td>emulatorEmulator.port</td><td>Emulator Emulator用 Port番号 Port = 43900</td></tr><tr class="even"><td>apiServer.port</td><td>Generate Deal, Generate Error 要Port番号 Port = 9999</td></tr><tr class="odd"><td>watchdog.enabled</td><td>APIS Alive情報有効無効設定</td></tr><tr class="even"><td>watchdog.periodMsec</td><td>Watch Dog Reset周期　(ms)</td></tr><tr class="odd"><td>watchdog.host</td><td>Watch DogがperiodMsec間隔でAccessするIP Address</td></tr><tr class="even"><td>watchdog.port</td><td>Watch DogがperiodMsec間隔でAccessするPort番号</td></tr><tr class="odd"><td>watchdog.uri</td><td>Watch DogサービスのURI</td></tr><tr class="even"><td><p>watchdog.requestTimeout</p><p>Msec</p></td><td>Watch DogのTimeout時間(ms)</td></tr></tbody></table>
 
 <a id="anchor7-2"></a>
 **7.2.cluster.xml**
@@ -374,7 +374,7 @@ apis-webの動作LogはUDP、Console、ファイルの3つの出力先がある�
 **10.1APIS間通信セキュリティ**
 --------------------------
 
-apis-web - Grid Master間のやり取りはVert.x, Hazelcasフレームワーク がサポートするEvent Bus通信とHazelcast通信によって行われている。それぞれの通信ではセキュリティのため以下の方法で暗号化を行っている。
+apis-web - Grid Master間のやり取りはVert.x, Hazelcastフレームワーク がサポートするEvent Bus通信とHazelcast通信によって行われている。それぞれの通信ではセキュリティのため以下の方法で暗号化を行っている。
 
 \(1\) Event Bus通信  
   -SSL公開鍵暗号方式 (RSA)  
