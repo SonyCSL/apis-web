@@ -1,13 +1,9 @@
 # apis-web
 
 ## Introduction
-apis-webは電力融通の開発や運用保守のためのWebサービス等に対して電力融通に関わる情報を提供する  
-ソフトウェアである。  
-apis-webはコミュニケーションラインに接続された複数のapis-mainと共にクラスタを構築し、  
-Grid Master(GM)やapis-mainからDC/DC ConverterやBattery等のハードウェア情報や
-電力融通情報を取得する。    
-Webサービスはそれらの情報をapis-webのWeb APIを利用することで取得することが可能である。  
-また、Debug用に電力融通やErrorを生成する機能も有する。  
+apis-web is a software program that provides power interchange-related information to Web services (such as a visualization service) for the development, operation, and maintenance of power interchange. To get information from apis-main installed in multiple nodes connected on a communication lines such as Ethernet, apis-web forms a cluster by using Vert.x and Hazelcast framework functions. From Grid Master in the cluster, it gets hardware information such as the DC/DC converter and battery RSoC information of all nodes and power interchange information from any node. apis-web also has functions to generate power interchange and errors for debugging purposes.
+
+Refer to the [apis-web_specification](#anchor1)  for more information.
 
 ![apis-web](https://user-images.githubusercontent.com/71874910/94901565-c8e41980-04d1-11eb-9c38-c751a6acbdd9.PNG)
 
