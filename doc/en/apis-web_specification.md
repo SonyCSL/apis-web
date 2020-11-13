@@ -65,8 +65,8 @@
 
 apis-web is a software program that provides power interchange-related information to Web services (such as a visualization service) for the development, operation, and maintenance of power interchange. To get information from apis-main installed in multiple nodes connected on a communication lines such as Ethernet, apis-web forms a cluster by using Vert.x and Hazelcast framework functions. From Grid Master in the cluster, it gets hardware information such as the DC/DC converter and battery RSoC information of all nodes and power interchange information from any node. apis-web also has functions to generate power interchange and errors for debugging purposes.
 
-![](media/media/image1.png)
-<p align="center">Fig. 2-1</p>
+![](media/media/image1.png)  
+Fig. 2-1
 
 <br>
 
@@ -76,8 +76,8 @@ apis-web is a software program that provides power interchange-related informati
 
 Fig. 3-1 shows the software architecture of apis-web. The Java Development Kit (JDK) is installed on the Linux operating system. apis-web runs on two JDK frameworks: event-driven load balancing platform Vert.x and in-memory distributed computing platform Hazelcast. (For versions of verified open source software used, see 12. Open Source Software Licenses.)
 
-![](media/media/image2.png)
-<p align="center">Fig. 3-1</p>
+![](media/media/image2.png)  
+Fig. 3-1
 
 <br>
 
@@ -104,8 +104,8 @@ apis-web provides three services, as shown in Fig. 3-2.
    * Log Configurator :  
     Web API to dynamically change the level of the UDP log output to apis-main on the communication line.
 
-![](media/media/image3.png)
-<p align="center">Fig. 3-2</p>
+![](media/media/image3.png)  
+Fig. 3-2
 
 <br>
 
