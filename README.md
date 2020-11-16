@@ -62,6 +62,7 @@ Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](
 
 <a id="anchor1"></a>
 ## Documentation
+&emsp;[apis-web_specification(EN)](https://github.com/SonyCSL/apis-web/blob/master/doc/en/apis-web_specification.md)
 &emsp;[apis-web_specification(JP)](https://github.com/SonyCSL/apis-web/blob/master/doc/jp/apis-web_specification.md)
 
 
