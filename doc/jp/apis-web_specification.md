@@ -480,7 +480,7 @@ Web APIによって取得できる情報が、個人情報に該当するかはa
 
 以下にapis-web用IoT BoardのOS要求を示す。
 
-<table><tbody><tr class="even"><td>種類</td><td><p>64bit OS, Linux 推奨</p><p>(Linux以外のOSの場合には採用前にAPIS動作確認を行う必要あり)</p></th></tr><tr class="odd"><td>サイズ</td><td><p>IoT Boardの内部ストレージ容量次第</p><p>(APIS等のLog保存場所用に3GB以上は確保すること)</p></td></tr><tr class="even"><td>動作ソフトウェア</td><td>AdoptOpenJDK (32/64bit)</td></tr><tr class="odd"><td>OSSライセンス</td><td>GPL等のコピーレフト型ライセンスの影響を避けるため、それらのライセンスを持つソフトウェアとapis-webが1つの実行ファイルとなるOSは禁止 (例:RTOS)</td></tr><tr class="even"><td>その他</td><td>OS起動時にapis-web等の自動実行が行えること</td></tr><tr class="odd"><td></td><td>ssh login/scpファイル転送が行えること</td></tr><tr class="even"><td></td><td>logrotage等でログを定期的にリネーム/圧縮/削除が行えること</td></tr><tr class="odd"><td></td><td>IPv4アドレスを固定できること</td></tr><tr class="even"><td></td><td>ntp serverと時間の同期が行えること</td></tr></tbody></table>
+<table><tbody><tr class="even"><td>種類</td><td><p>64bit OS, Linux 推奨</p><p>(Linux以外のOSの場合には採用前にAPIS動作確認を行う必要あり)</p></th></tr><tr class="odd"><td>サイズ</td><td><p>IoT Boardの内部ストレージ容量次第</p><p>(APIS等のLog保存場所用に3GB以上は確保すること)</p></td></tr><tr class="even"><td>動作ソフトウェア</td><td>AdoptOpenJDK (32/64bit)</td></tr><tr class="odd"><td>OSSライセンス</td><td>GPL等のコピーレフト型ライセンスの影響を避けるため、それらのライセンスを持つソフトウェアとapis-webが1つの実行ファイルとなるOSは禁止 (例:RTOS)</td></tr><tr class="even"><td rowspan="5">その他</td><td>OS起動時にapis-web等の自動実行が行えること</td></tr><tr class="odd"><td>ssh login/scpファイル転送が行えること</td></tr><tr class="even"><td>logrotage等でログを定期的にリネーム/圧縮/削除が行えること</td></tr><tr class="odd"><td>IPv4アドレスを固定できること</td></tr><tr class="even"><td>ntp serverと時間の同期が行えること</td></tr></tbody></table>
 
   [**1.** **用語・略語** 5]: #用語略語
   [**2.** **概要** 6]: #概要
