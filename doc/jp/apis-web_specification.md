@@ -212,7 +212,22 @@ Error GenerationのWeb APIを実行するとブラウザ上に下記のWindowが
 
 Main Controller等のWebアプリケーションは下記のWeb APIにてapis-webと情報のやり取りを行うことができる。以下にそのWeb APIの仕様を説明する。
 
-<table><thead><tr class="header"><td><p>Budo</p><p>Emulator機能</p></td><td>/shutdown</td><td>全体or ノード毎のシャットダウン指示</td></tr></thead><tbody><tr class="odd"><td></td><td>/setOperationMode</td><td>Global or Local のOperation Mode設定</td></tr><tr class="even"><td></td><td>/deals</td><td>電力融通情報取得</td></tr><tr class="odd"><td></td><td>/unitIds</td><td>ノードID一覧取得</td></tr><tr class="even"><td></td><td>/getStatus</td><td>Global Operation Mode取得</td></tr><tr class="odd"><td></td><td>/active</td><td>Global Operation Mode設定 (Run)</td></tr><tr class="even"><td></td><td>/quiet</td><td>Global Operation Mode設定 (Soft stop)</td></tr><tr class="odd"><td></td><td>/stop</td><td>Global Operation Mode設定 (Force stop)</td></tr><tr class="even"><td></td><td>/manual</td><td>Global Operation Mode設定 (Manual)</td></tr><tr class="odd"><td><p>Emulator</p><p>Emulator機能</p></td><td>/get/log</td><td>全ノードのDC/DC ConverterやBattery　RSoC等のハードウェア情報取得</td></tr><tr class="even"><td>Api Server機能</td><td>/deal</td><td>電力融通生成 (評価用)</td></tr><tr class="odd"><td></td><td>/error</td><td>Error生成 (評価用)</td></tr><tr class="even"><td></td><td>/log</td><td>apis-mainのUDP Log 出力Level変更</td></tr></tbody></table>
+<table>
+<tbody>
+<tr class="even"><td rowspan="9"><p>Budo</p><p>Emulator機能</p></td><td>/shutdown</td><td>全体or ノード毎のシャットダウン指示</td></tr>
+<tr class="odd"><td>/setOperationMode</td><td>Global or Local のOperation Mode設定</td></tr>
+<tr class="even"><td>/deals</td><td>電力融通情報取得</td></tr>
+<tr class="odd"><td>/unitIds</td><td>ノードID一覧取得</td></tr>
+<tr class="even"><td>/getStatus</td><td>Global Operation Mode取得</td></tr>
+<tr class="odd"><td>/active</td><td>Global Operation Mode設定 (Run)</td></tr>
+<tr class="even"><td>/quiet</td><td>Global Operation Mode設定 (Soft stop)</td></tr>
+<tr class="odd"><td>/stop</td><td>Global Operation Mode設定 (Force stop)</td></tr
+><tr class="even"><td>/manual</td><td>Global Operation Mode設定 (Manual)</td></tr>
+<tr class="odd"><td><p>Emulator</p><p>Emulator機能</p></td><td>/get/log</td>
+<td>全ノードのDC/DC ConverterやBattery　RSoC等のハードウェア情報取得</td></tr>
+<tr class="even"><td rowspan="3">Api Server機能</td><td>/deal</td><td>電力融通生成 (評価用)</td></tr>
+<tr class="odd"><td>/error</td><td>Error生成 (評価用)</td></tr>
+<tr class="even"><td>/log</td><td>apis-mainのUDP Log 出力Level変更</td></tr></tbody></table>
 
 <a id="anchor5-2"></a>
 **5.2.apis-web – Grid Master間通信**
@@ -230,7 +245,51 @@ Main Controller等のWeb アプリケーションからWeb API (“/get/log”, 
 
 Emulator Emulator が処理するWeb API ”/get/log” で取得可能な電力融通情報は以下である。これらの情報を1セットとして全ノード分のハードウェア情報を取得できる。
 
-<table><thead><tr class="header"><td>apis</td><td>version</td><td>apis-main version</td></tr></thead><tbody><tr class="odd"><td></td><td>remaining_capacity_wh</td><td>Battery残容量(Wh)</td></tr><tr class="even"><td></td><td>deal_interlock_capacity</td><td>1融通 1スロットとした場合に、同時に融通可能なスロット数</td></tr><tr class="odd"><td></td><td>operation_mode.global</td><td><p>クラスタ全体のOperation Mode設定</p><p>autonomous : 通常の電力融通Mode</p><p>heteronomous : 既存電力融通継続</p><p>新電力融通生成無効</p><p>stop : 電力融通停止Mode</p><p>manual : 手動Mode (評価用)</p></td></tr><tr class="even"><td></td><td>operation_mode.local</td><td><p>自ノードのOperation Mode設定</p><p>空 : operation_mode.global</p><p>に従う</p><p>heteronomous : 既存電力融通継続</p><p>新電力融通生成無効</p><p>stop : 電力融通停止Mode</p></td></tr><tr class="odd"><td></td><td>operation_mode.effective</td><td><p>有効Operation Mode</p><p>globalとlocalのOperation Modeの組み合わせにて決定</p></td></tr><tr class="even"><td>oesunit</td><td>communityId</td><td>コミュニティID</td></tr><tr class="odd"><td></td><td>clusterId</td><td>クラスタID</td></tr><tr class="even"><td></td><td>id</td><td>ノードID</td></tr><tr class="odd"><td></td><td>display</td><td>ノード名称</td></tr><tr class="even"><td></td><td>sn</td><td>ノードシリアルNo.</td></tr><tr class="odd"><td></td><td>budo</td><td><p>旧システムでは自動融通がActiveになっていることを示すフラグだったが、</p><p>現行システムではoperation_mode.effective</p><p>がautonomousかそれ以外かを示すフラグとなっている。</p><p>autonomous : 1</p><p>それ以外 : 0</p></td></tr><tr class="even"><td></td><td>ip</td><td>IPv4</td></tr><tr class="odd"><td></td><td>Ipv6_ll</td><td>IPv6リンクローカルユニキャスト</td></tr><tr class="even"><td></td><td>Ipv6_g</td><td>IPv6グローバルユニキャスト</td></tr><tr class="odd"><td></td><td>mac</td><td>MAC address</td></tr><tr class="even"><td>battery</td><td>rsoc</td><td>相対残容量 (%)</td></tr><tr class="odd"><td></td><td>battery_operation_status</td><td>電力融通許可/不許可フラグ</td></tr><tr class="even"><td>time</td><td>apis-mainノードの時間</td><td></td></tr><tr class="odd"><td>dcdc</td><td>status.status</td><td>状態</td></tr><tr class="even"><td></td><td>status.alarm</td><td>Alarm番号</td></tr><tr class="odd"><td></td><td>status.stateAlarm</td><td>Alarm情報</td></tr><tr class="even"><td></td><td>status.statusName</td><td>DC/DC Converter Status名称</td></tr><tr class="odd"><td></td><td>status.runningState</td><td>DC/DC Converter動作 Status</td></tr><tr class="even"><td></td><td>status.operationMode</td><td>Operation Mode</td></tr><tr class="odd"><td></td><td>meter.wb</td><td>DC Grid 電力 (W)</td></tr><tr class="even"><td></td><td>meter.vg</td><td>DC Grid電圧 (V)</td></tr><tr class="odd"><td></td><td>meter.ig</td><td>DC Grid電流 (A)</td></tr><tr class="even"><td></td><td>meter.wb</td><td>Battery電力 (W)</td></tr><tr class="odd"><td></td><td>meter.vb</td><td>Battery電圧 (V)</td></tr><tr class="even"><td></td><td>meter.ib</td><td>Battery電流 (A)</td></tr><tr class="odd"><td></td><td>meter.tmp</td><td>内部温度 (℃)</td></tr><tr class="even"><td></td><td>vdis.dvg</td><td>DC Grid目標電圧値 (V)</td></tr><tr class="odd"><td></td><td>vdis.drg</td><td>DC Grid Droop率 (%)</td></tr><tr class="even"><td></td><td>param.dig</td><td>DC Grid上限電流 (A)</td></tr><tr class="odd"><td></td><td>param.ogv</td><td>DC Grid過電圧閾値 (V)</td></tr><tr class="even"><td></td><td>param.ugv</td><td>DC Grid低電圧閾値 (V)</td></tr><tr class="odd"><td></td><td>param.cib</td><td>Battery上限電流 (A)</td></tr><tr class="even"><td></td><td>param.obv</td><td>Battery過電圧閾値 (V)</td></tr><tr class="odd"><td></td><td>param.ubv</td><td>Battery低電圧閾値 (V)</td></tr></tbody></table>
+<table>
+<tbody>
+<tr class="even"><td rowspan="6">apis</td><td>version</td><td>apis-main version</td></tr>
+<tr class="odd"><td>remaining_capacity_wh</td><td>Battery残容量(Wh)</td></tr>
+<tr class="even"><td>deal_interlock_capacity</td><td>1融通 1スロットとした場合に、同時に融通可能なスロット数</td></tr>
+<tr class="odd"><td>operation_mode.global</td><td><p>クラスタ全体のOperation Mode設定</p><p>autonomous : 通常の電力融通Mode</p><p>heteronomous : 既存電力融通継続</p><p>新電力融通生成無効</p><p>stop : 電力融通停止Mode</p><p>manual : 手動Mode (評価用)</p></td></tr>
+<tr class="even"><td>operation_mode.local</td><td><p>自ノードのOperation Mode設定</p><p>空 : operation_mode.global</p><p>に従う</p><p>heteronomous : 既存電力融通継続</p><p>新電力融通生成無効</p><p>stop : 電力融通停止Mode</p></td></tr>
+<tr class="odd"><td>operation_mode.effective</td><td><p>有効Operation Mode</p><p>globalとlocalのOperation Modeの組み合わせにて決定</p></td></tr>
+
+<tr class="even"><td rowspan="10">oesunit</td><td>communityId</td><td>コミュニティID</td></tr
+><tr class="odd"><td>clusterId</td><td>クラスタID</td></tr>
+<tr class="even"><td>id</td><td>ノードID</td></tr>
+<tr class="odd"><td>display</td><td>ノード名称</td></tr>
+<tr class="even"><td>sn</td><td>ノードシリアルNo.</td></tr>
+<tr class="odd"><td>budo</td><td><p>旧システムでは自動融通がActiveになっていることを示すフラグだったが、</p><p>現行システムではoperation_mode.effective</p><p>がautonomousかそれ以外かを示すフラグとなっている。</p><p>autonomous : 1</p><p>それ以外 : 0</p></td></tr>
+<tr class="even"><td>ip</td><td>IPv4</td></tr>
+<tr class="odd"><td>Ipv6_ll</td><td>IPv6リンクローカルユニキャスト</td></tr>
+<tr class="even"><td>Ipv6_g</td><td>IPv6グローバルユニキャスト</td></tr>
+<tr class="odd"><td>mac</td><td>MAC address</td></tr>
+
+<tr class="even"><td rowspan="2">battery</td><td>rsoc</td><td>相対残容量 (%)</td></tr>
+<tr class="odd"><td>battery_operation_status</td><td>電力融通許可/不許可フラグ</td></tr>
+
+<tr class="even"><td colspan="2">time</td><td>apis-mainノードの時間</td></tr>
+
+<tr class="odd"><td rowspan="21">dcdc</td><td>status.status</td><td>状態</td></tr>
+<tr class="even"><td>status.alarm</td><td>Alarm番号</td></tr>
+<tr class="odd"><td>status.stateAlarm</td><td>Alarm情報</td></tr>
+<tr class="even"><td>status.statusName</td><td>DC/DC Converter Status名称</td></tr>
+<tr class="odd"><td>status.runningState</td><td>DC/DC Converter動作 Status</td></tr>
+<tr class="even"><td>status.operationMode</td><td>Operation Mode</td></tr>
+<tr class="odd"><td>meter.wb</td><td>DC Grid 電力 (W)</td></tr><tr class="even"><td>meter.vg</td><td>DC Grid電圧 (V)</td></tr>
+<tr class="odd"><td>meter.ig</td><td>DC Grid電流 (A)</td></tr>
+<tr class="even"><td>meter.wb</td><td>Battery電力 (W)</td></tr>
+<tr class="odd"><td>meter.vb</td><td>Battery電圧 (V)</td></tr>
+<tr class="even"><td>meter.ib</td><td>Battery電流 (A)</td></tr>
+<tr class="odd"><td>meter.tmp</td><td>内部温度 (℃)</td></tr>
+<tr class="even"><td>vdis.dvg</td><td>DC Grid目標電圧値 (V)</td></tr>
+<tr class="odd"><td>vdis.drg</td><td>DC Grid Droop率 (%)</td></tr>
+<tr class="even"><td>param.dig</td><td>DC Grid上限電流 (A)</td></tr>
+<tr class="odd"><td>param.ogv</td><td>DC Grid過電圧閾値 (V)</td></tr>
+<tr class="even"><td>param.ugv</td><td>DC Grid低電圧閾値 (V)</td></tr>
+<tr class="odd"><td>param.cib</td><td>Battery上限電流 (A)</td></tr>
+<tr class="even"><td>param.obv</td><td>Battery過電圧閾値 (V)</td></tr
+><tr class="odd"><td>param.ubv</td><td>Battery低電圧閾値 (V)</td></tr></tbody></table>
 
 <a id="anchor6-2"></a>
 **6.2.Budo Emulator /deals** 
