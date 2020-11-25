@@ -926,23 +926,19 @@ The recommended operating system specifications for the IoT Board used for apis-
 <td>To prevent the effects of copyleft licenses such as GPL, an operating system that has open source software and apis-web in one execution file is prohibited (e.g. a real-time operating system).</td>
 </tr>
 <tr class="even">
-<td>Others</td>
+<td rowspan="5">Others</td>
 <td>Ability to automatically execute apis-web and other software when the operating system starts up.</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Ability to carry out ssh login/scp file transfer.</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Ability to periodically rename/compress/delete logs, such as by using logrotage.</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>Ability to set static IPv4 addresses.</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>Ability to synchronize the system time with the NTP server.</td>
 </tr>
 </tbody>
