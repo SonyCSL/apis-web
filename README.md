@@ -65,6 +65,18 @@ Refer to "Chapter 7, About Configuration Files" in the [apis-web_specification](
 &emsp;[apis-web_specification(EN)](https://github.com/SonyCSL/apis-web/blob/master/doc/en/apis-web_specification_en.md)  
 &emsp;[apis-web_specification(JP)](https://github.com/SonyCSL/apis-web/blob/master/doc/jp/apis-web_specification.md)
 
+## API Specification  
+
+An example of creating an API specification using the Javadoc command is shown below.  
+(For Ubuntu18.04)  
+  
+```bash  
+$ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/  
+$ cd apis-web  
+$ mvn javadoc:javadoc  
+```  
+
+The API specification is created in apis-main/target/site/apidocs/.  
 
 
 ## License
