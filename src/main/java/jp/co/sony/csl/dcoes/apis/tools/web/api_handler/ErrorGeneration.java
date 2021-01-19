@@ -7,6 +7,11 @@ import jp.co.sony.csl.dcoes.apis.common.Error;
 import jp.co.sony.csl.dcoes.apis.tools.web.ApiServer;
 
 /**
+ * Provides Web API to delivers error received from the outside.
+ * Used in {@link ApiServer}.
+ * Provides the following API.
+ * - /error : Intentionally generates an error
+ * @author OES Project
  * 外部からエラーを投入するための Web API を提供する.
  * {@link ApiServer} で使用される.
  * 以下の API を提供する.
@@ -17,6 +22,8 @@ public class ErrorGeneration implements ApiServer.ApiHandler {
 
 	/**
 	 * {@inheritDoc}
+	 * Processes if the path begins with {@code "/error"}.
+	 * {@inheritDoc}
 	 * パスが {@code "/error"} で始まっていれば処理する.
 	 */
 	@Override public boolean canHandleRequest(HttpServerRequest req) {
@@ -24,6 +31,14 @@ public class ErrorGeneration implements ApiServer.ApiHandler {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * If the request method is POST, generates and throws an error with the attributes below.
+	 * - unitId : ID of unit that generated the error
+	 * - category : Error category
+	 * - extent : Extent of error
+	 * - level : Level of error
+	 * - message : Error message
+	 * If the request method is GET, outputs the input form.
 	 * {@inheritDoc}
 	 * リクエストのメソッドが POST なら以下の属性でエラーを生成し投げる.
 	 * - unitId : エラー生成ユニット ID

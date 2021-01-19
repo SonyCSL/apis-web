@@ -10,6 +10,14 @@ import jp.co.sony.csl.dcoes.apis.common.util.vertx.VertxConfig;
 import jp.co.sony.csl.dcoes.apis.tools.web.api_handler.DealGeneration;
 
 /**
+
+
+ * This Verticle provides Web API to deliver Power Sharing information from the outside. 
+ * {@code @Deprecated} because this is already provided as {@link jp.co.sony.csl.dcoes.apis.tools.web.ApiServer.ApiHandler}.
+ * Processing has already migrated to {@link DealGeneration}.
+ * The following API is provided.
+ * - /deal : Delivers Power Sharing
+ * @author OES Project
  * 外部から融通情報を投入するための Web API を提供する Verticle.
  * すでに {@link jp.co.sony.csl.dcoes.apis.tools.web.ApiServer.ApiHandler} として提供しているため {@code @Deprecated}.
  * 処理は {@link DealGeneration} に移譲ずみ.
@@ -21,6 +29,8 @@ import jp.co.sony.csl.dcoes.apis.tools.web.api_handler.DealGeneration;
 	private static final Logger log = LoggerFactory.getLogger(DealGenerator.class);
 
 	/**
+	 * This is the default value of port that opens the service.
+	 * The value is {@value}
 	 * サービスを開くポートのデフォルト値.
 	 * 値は {@value}
 	 */
@@ -29,6 +39,10 @@ import jp.co.sony.csl.dcoes.apis.tools.web.api_handler.DealGeneration;
 	private static final DealGeneration handler_ = new DealGeneration();
 
 	/**
+	 * Called during startup.
+	 * Opens HTTP service.
+	 * @param startFuture {@inheritDoc}
+	 * @throws Exception {@inheritDoc}
 	 * 起動時に呼び出される.
 	 * HTTP サービスを開く.
 	 * @param startFuture {@inheritDoc}
@@ -46,6 +60,8 @@ import jp.co.sony.csl.dcoes.apis.tools.web.api_handler.DealGeneration;
 	}
 
 	/**
+	 * Called when stopped.
+	 * @throws Exception {@inheritDoc}
 	 * 停止時に呼び出される.
 	 * @throws Exception {@inheritDoc}
 	 */

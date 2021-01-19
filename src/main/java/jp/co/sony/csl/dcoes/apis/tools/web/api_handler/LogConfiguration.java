@@ -7,6 +7,11 @@ import jp.co.sony.csl.dcoes.apis.common.ServiceAddress;
 import jp.co.sony.csl.dcoes.apis.tools.web.ApiServer;
 
 /**
+ * Provides Web API to change the level of the log from the outside. 
+ * Used in {@link ApiServer}.
+ * The following API is provided.
+ * - /log : Changes the the log level for all programs participating in the cluster.
+ * @author OES Project
  * 外部からログのレベルを変更するための Web API を提供する.
  * {@link ApiServer} で使用される.
  * 以下の API を提供する.
@@ -17,6 +22,8 @@ public class LogConfiguration implements ApiServer.ApiHandler {
 
 	/**
 	 * {@inheritDoc}
+	 * Processes if path begins with {@code "/log"}.
+	 * {@inheritDoc}
 	 * パスが {@code "/log"} で始まっていれば処理する.
 	 */
 	@Override public boolean canHandleRequest(HttpServerRequest req) {
@@ -24,6 +31,13 @@ public class LogConfiguration implements ApiServer.ApiHandler {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * If the request method is POST, delivers to the log level change service under the following conditions.
+	 * - handler : Log handler name.
+	 *             At present, only {@code "Multicast"} is supported.
+	 * - level : Log level.
+	 *           If unspecified or empty, reverts to the level at startup.
+	 * If the request method is GET, outputs the input form.
 	 * {@inheritDoc}
 	 * リクエストのメソッドが POST なら以下の条件でログレベル変更サービスに投げる.
 	 * - handler : ログハンドラ名.

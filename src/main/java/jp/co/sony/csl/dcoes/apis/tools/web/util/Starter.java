@@ -10,6 +10,14 @@ import jp.co.sony.csl.dcoes.apis.tools.web.EmulatorEmulator;
 import jp.co.sony.csl.dcoes.apis.tools.web.deprecated.DealGenerator;
 
 /**
+ * These are the main Verticles of apis-web.
+ * Specified by maven-shade-plugin's {@literal <Main-Verticle>} in pom.xml.
+ * Starts the following Verticles.
+ * - {@link EmulatorEmulator} : Verticle that provides unit data to the outside. Emulates providing the unit data to main_controller in the DCDC emulator environment.
+ * - {@link BudoEmulator} : Verticle that provides Power Sharing conditions, etc., to the outside. Emulates providing {@code BUDO} information to main_controller in the DCDC emulator environment.
+ * - {@link ApiServer} : Verticle that provides various Web API for controlling APIS from the outside.
+ * - {@link DealGenerator} : Verticle that provides various Web API for injecting Power Sharing information from the outside. {@code @Deprecated} because this is already provided as {@link ApiServer.ApiHandler} under {@link ApiServer}
+ * @author OES Project
  * apis-web の親玉 Verticle.
  * pom.xml の maven-shade-plugin の {@literal <Main-Verticle>} で指定してある.
  * 以下の Verticle を起動する.
@@ -23,6 +31,7 @@ import jp.co.sony.csl.dcoes.apis.tools.web.deprecated.DealGenerator;
 public class Starter extends AbstractStarter {
 
 	/**
+	 * Called from {@link AbstractStarter#start(Future)} during startup.
 	 * 起動時に {@link AbstractStarter#start(Future)} から呼び出される.
 	 */
 	@Override protected void doStart(Handler<AsyncResult<Void>> completionHandler) {

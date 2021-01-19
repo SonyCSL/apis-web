@@ -13,6 +13,15 @@ import jp.co.sony.csl.dcoes.apis.common.util.vertx.JsonObjectWrapper;
 import jp.co.sony.csl.dcoes.apis.common.util.vertx.VertxConfig;
 
 /**
+ * This Verticle provides unit data to the outside.
+ * Started from {@link jp.co.sony.csl.dcoes.apis.tools.web.util.Starter} Verticle.
+ * Emulates providing unit data to main_controller in DCDC emulator environment.
+ * Provides the following API.
+ * - /get/log : Gets unit data from all units
+ * Removes the attributes below if {@code removeDeprecatedData=true} is specified in environment variables; then returns the data.
+ * - Under emu
+ * - Under dcdc.powermeter
+ * @author OES Project
  * 外部に対しユニットデータを提供する Verticle.
  * {@link jp.co.sony.csl.dcoes.apis.tools.web.util.Starter} Verticle から起動される.
  * DCDC emulator 環境での main_controller へのユニットデータ提供を模倣.
@@ -27,12 +36,16 @@ public class EmulatorEmulator extends AbstractVerticle {
 	private static final Logger log = LoggerFactory.getLogger(EmulatorEmulator.class);
 
 	/**
+	 * This is the default value of the port that opens the service.
+	 * The value is {@value}
 	 * サービスを開くポートのデフォルト値.
 	 * 値は {@value}
 	 */
 	private static final int DEFAULT_PORT = 43900;
 
 	/**
+	 * Creates cache of unit data.
+	 * Periodically queries GridMaster and caches.
 	 * ユニットデータのキャッシュ.
 	 * 定期的に GridMaster に問合せキャッシュしておく.
 	 */
@@ -40,6 +53,10 @@ public class EmulatorEmulator extends AbstractVerticle {
 	private static final JsonObject empty_ = new JsonObject();
 
 	/**
+	 * Called during startup.
+	 * Opens HTTP service.
+	 * @param startFuture {@inheritDoc}
+	 * @throws Exception {@inheritDoc}
 	 * 起動時に呼び出される.
 	 * HTTP サービスを開く.
 	 * @param startFuture {@inheritDoc}
@@ -57,6 +74,8 @@ public class EmulatorEmulator extends AbstractVerticle {
 	}
 
 	/**
+	 * Called when stopped.
+	 * @throws Exception {@inheritDoc}
 	 * 停止時に呼び出される.
 	 * @throws Exception {@inheritDoc}
 	 */
@@ -67,6 +86,10 @@ public class EmulatorEmulator extends AbstractVerticle {
 	////
 
 	/**
+	 * Starts HTTP service.
+	 * Gets settings from CONFIG and initializes.
+	 * - CONFIG.emulatorEmulator.port : Port [{@link Integer}]
+	 * @param completionHandler The completion handler
 	 * HTTP サービスを起動する.
 	 * CONFIG から設定を取得し初期化する.
 	 * - CONFIG.emulatorEmulator.port : ポート [{@link Integer}]
@@ -128,6 +151,11 @@ public class EmulatorEmulator extends AbstractVerticle {
 	}
 
 	/**
+	 * Called if {@code removeDeprecatedData=true} is specified in environment variables and converts unit data.
+	 * Removes the attributes below and returns data.
+	 * - Under emu
+	 * - Under dcdc.powermeter
+	 * @param data Unit data to be converted
 	 * 環境変数に {@code removeDeprecatedData=true} が指定されていた場合に呼ばれユニットデータをコンバートする.
 	 * 以下の属性を削除して返す.
 	 * - emu 以下

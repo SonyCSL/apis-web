@@ -14,7 +14,14 @@ import jp.co.sony.csl.dcoes.apis.tools.web.api_handler.ErrorGeneration;
 import jp.co.sony.csl.dcoes.apis.tools.web.api_handler.LogConfiguration;
 
 /**
- * 外部から APIS を制御するための各種 Web API を提供する Verticle.
+ * These Verticles provide various Web API for controlling APIS from the outside.
+ * Started from {@link jp.co.sony.csl.dcoes.apis.tools.web.util.Starter} Verticle.
+ * Provides the following services.
+ * - {@link ErrorGeneration} : Provides Web API for delivering errors from the outside.
+ * - {@link DealGeneration} : Provides Web API for delivering Power Sharing information from the outside.
+ * - {@link LogConfiguration} : Provides Web API for changing the log level from the outside. 
+ * @author OES Project
+ * 外部から APIS を制御するための各種 Web API を提供する Verticle. 
  * {@link jp.co.sony.csl.dcoes.apis.tools.web.util.Starter} Verticle から起動される.
  * 以下のサービスを提供する.
  * - {@link ErrorGeneration} : 外部からエラーを投入するための Web API を提供する
@@ -26,12 +33,15 @@ public class ApiServer extends AbstractVerticle {
 	private static final Logger log = LoggerFactory.getLogger(ApiServer.class);
 
 	/**
+	 * This is the default value of the port for opening the service.
+	 * Value is {@value}
 	 * サービスを開くポートのデフォルト値.
 	 * 値は {@value}
 	 */
 	private static final int DEFAULT_PORT = 9999;
 
 	/**
+	 * Array of objects that process the API.
 	 * API を処理するオブジェクトの配列.
 	 */
 	private static final ApiHandler[] apiHandlers_ = new ApiHandler[] {
@@ -41,6 +51,10 @@ public class ApiServer extends AbstractVerticle {
 	};
 
 	/**
+	 * Called during startup.
+	 * Opens the HTTP service.
+	 * @param startFuture {@inheritDoc}
+	 * @throws Exception {@inheritDoc}
 	 * 起動時に呼び出される.
 	 * HTTP サービスを開く.
 	 * @param startFuture {@inheritDoc}
@@ -58,6 +72,8 @@ public class ApiServer extends AbstractVerticle {
 	}
 
 	/**
+	 * Called when stopped.
+	 * @throws Exception {@inheritDoc}
 	 * 停止時に呼び出される.
 	 * @throws Exception {@inheritDoc}
 	 */
@@ -68,6 +84,10 @@ public class ApiServer extends AbstractVerticle {
 	////
 
 	/**
+	 * Starts the HTTP service.
+	 * Gets settings from CONFIG and initializes.
+	 * - CONFIG.apiServer.port : Port [{@link Integer}]
+	 * @param completionHandler The completion handler
 	 * HTTP サービスを起動する.
 	 * CONFIG から設定を取得し初期化する.
 	 * - CONFIG.apiServer.port : ポート [{@link Integer}]
@@ -105,17 +125,26 @@ public class ApiServer extends AbstractVerticle {
 	}
 
 	/**
+	 * This is the interface for cealling the object to be implemented for API.
+	 * @author OES Project
 	 * API の実装オブジェクトを呼び出すためのインタフェイス.
 	 * @author OES Project
 	 */
 	public static interface ApiHandler {
 		/**
+		 * Confirms that it is possible to process the received request.
+		 * @param req Request {@link HttpServerRequest}
+		 * @return Yes/no flag
 		 * 受信したリクエストを処理可能か確認する.
 		 * @param req リクエスト {@link HttpServerRequest}
 		 * @return 可否フラグ
 		 */
 		boolean canHandleRequest(HttpServerRequest req);
 		/**
+		 * Processes the received request.
+		 * @param vertx vertx object
+		 * @param req Request {@link HttpServerRequest}
+		 * @param log Logger {@link Logger}
 		 * 受信したリクエストに対する処理を実行する.
 		 * @param vertx vertx オブジェクト
 		 * @param req リクエスト {@link HttpServerRequest}

@@ -9,6 +9,11 @@ import jp.co.sony.csl.dcoes.apis.common.util.vertx.JsonObjectUtil;
 import jp.co.sony.csl.dcoes.apis.tools.web.ApiServer;
 
 /**
+ * Provides Web API to deliver Power Sharing information from the outside. 
+ * Used in {@link ApiServer}.
+ * The following API is provided.
+ * - /deal : Delivers Power Sharing
+ * @author OES Project
  * 外部から融通情報を投入するための Web API を提供する.
  * {@link ApiServer} で使用される.
  * 以下の API を提供する.
@@ -19,6 +24,10 @@ public class DealGeneration implements ApiServer.ApiHandler {
 
 	/**
 	 * {@inheritDoc}
+	 * Processes if path begins with {@code "/deal"}.
+	 * {@inheritDoc}
+	 * パスが {@code "/deal"} で始まっていれば処理する.
+	 * {@inheritDoc}
 	 * パスが {@code "/deal"} で始まっていれば処理する.
 	 */
 	@Override public boolean canHandleRequest(HttpServerRequest req) {
@@ -26,6 +35,9 @@ public class DealGeneration implements ApiServer.ApiHandler {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * If the request method is POST, generates {@link JsonObject} from the form's {@code "json"} value and delivers it to the Power Sharing registration service.
+	 * If the request method is GET, outputs the input form.
 	 * {@inheritDoc}
 	 * リクエストのメソッドが POST ならフォームの {@code "json"} 値から {@link JsonObject} を生成し融通登録サービスに投げる.
 	 * リクエストのメソッドが GET なら入力フォームを出力する.

@@ -16,6 +16,20 @@ import jp.co.sony.csl.dcoes.apis.common.util.StringUtil;
 import jp.co.sony.csl.dcoes.apis.common.util.vertx.VertxConfig;
 
 /**
+ * This Verticle provides Power Sharing conditions, etc., to the outside.
+ * Started from {@link jp.co.sony.csl.dcoes.apis.tools.web.util.Starter} Verticle.
+ * Emulates providing {@code BUDO} information to main_controller in the DCDC emulator environment.
+ * Provides the following API.
+ * - /shutdown         : Shuts down unit specified by {@code unitId} or all units (including apis-tools participating in clusters).
+ * - /setOperationMode : Changes the local Power Sharing mode or global Power Sharing mode of the unit specified by {@code unitId} to {@code value}
+ * - /deals            : Gets Power Sharing information
+ * - /unitIds          : Gets list of IDs of units set by POLICY 
+ * - /getStatus        : Gets whether of not the global Power Sharing mode is a mode that allows Power Sharing
+ * - /active           : Sets global Power Sharing mode to {@code autonomous}
+ * - /quiet            : Sets global Power Sharing mode to {@code heteronomous}
+ * - /stop             : Sets global Power Sharing mode to {@code stop}
+ * - /manual           : Sets global Power Sharing mode to {@code manual}
+ * @author OES Project
  * 外部に対し融通状況などを提供する Verticle.
  * {@link jp.co.sony.csl.dcoes.apis.tools.web.util.Starter} Verticle から起動される.
  * DCDC emulator 環境での main_controller への {@code BUDO} 情報提供を模倣.
@@ -35,12 +49,16 @@ public class BudoEmulator extends AbstractVerticle {
 	private static final Logger log = LoggerFactory.getLogger(BudoEmulator.class);
 
 	/**
+	 * This is the default value of the port that opens the service.
+	 * The value is {@value}
 	 * サービスを開くポートのデフォルト値.
 	 * 値は {@value}
 	 */
 	private static final int DEFAULT_PORT = 43830;
 
 	/**
+	 * Called during startup.
+	 * Opens HTTP service.
 	 * 起動時に呼び出される.
 	 * HTTP サービスを開く.
 	 * @param startFuture {@inheritDoc}
@@ -58,6 +76,8 @@ public class BudoEmulator extends AbstractVerticle {
 	}
 
 	/**
+	 * Called when stopped.
+	 * @throws Exception {@inheritDoc}
 	 * 停止時に呼び出される.
 	 * @throws Exception {@inheritDoc}
 	 */
@@ -68,6 +88,10 @@ public class BudoEmulator extends AbstractVerticle {
 	////
 
 	/**
+	 * Starts HTTP service.
+	 * Gets settings from CONFIG and initializes.
+	 * - CONFIG.budoEmulator.port : ポート [{@link Integer}]
+	 * @param completionHandler The completion handler
 	 * HTTP サービスを起動する.
 	 * CONFIG から設定を取得し初期化する.
 	 * - CONFIG.budoEmulator.port : ポート [{@link Integer}]
@@ -179,6 +203,9 @@ public class BudoEmulator extends AbstractVerticle {
 	////
 
 	/**
+	 * Sets the global Power Sharing mode, gets the global Power Sharing mode again, and returns the response.
+	 * @param req HTTP Request object
+	 * @param globalOperationMode Global Power Sharing mode to be set
 	 * グローバル融通モードをセットしあらためてグローバル融通モードを取得してレスポンスを返す.
 	 * @param req HTTP リクエストオブジェクト
 	 * @param globalOperationMode セットするグローバル融通モード
@@ -186,9 +213,11 @@ public class BudoEmulator extends AbstractVerticle {
 	private void setGlobalOperationModeAndReturn_(HttpServerRequest req, String globalOperationMode) {
 		if (log.isInfoEnabled()) log.info("setting global operationMode : '" + globalOperationMode + "' ...");
 		DeliveryOptions options = new DeliveryOptions().addHeader("command", "set");
+		// Sets Global Power Sharing mode
 		// グローバル融通モードをセットする
 		vertx.eventBus().send(ServiceAddress.operationMode(), globalOperationMode, options, rep -> {
 			if (rep.succeeded()) {
+				// Gets global Power Sharing mode and returns the response
 				// グローバル融通モードを取得してレスポンスを返す
 				checkGlobalOperationModeAndReturn_(req);
 			} else {
@@ -199,16 +228,20 @@ public class BudoEmulator extends AbstractVerticle {
 		});
 	}
 	/**
+	 * Gets global Power Sharing mode and returns the response.
+	 * @param req HTTP Request object
 	 * グローバル融通モードを取得してレスポンスを返す.
 	 * @param req HTTP リクエストオブジェクト
 	 */
 	private void checkGlobalOperationModeAndReturn_(HttpServerRequest req) {
 		checkGlobalOperationMode_(res -> {
 			if (res.succeeded()) {
+				// Returns true if autonomous or heteronomous, otherwise returns false
 				// autonomous または heteronomous で true, それ以外は false を返すことになる
 				JsonObject result = new JsonObject().put("active", res.result());
 				req.response().setChunked(true).putHeader("content-type", "application/json").end(result.encode() + '\n');
 			} else {
+				// Returns false if error occurs
 				// エラーが起きたら false を返す
 				JsonObject result = new JsonObject().put("active", Boolean.FALSE).put("error", String.valueOf(res.cause()));
 				req.response().setChunked(true).putHeader("content-type", "application/json").end(result.encode() + '\n');
@@ -216,6 +249,9 @@ public class BudoEmulator extends AbstractVerticle {
 		});
 	}
 	/**
+	 * Gets global Power Sharing mode.
+	 * Returns {@link Boolean#TRUE} if {@code autonomous} or {@code heteronomous}, otherwise returns {@link Boolean#FALSE}.
+	 * @param completionHandler The completion handler
 	 * グローバル融通モードを取得する.
 	 * {@code autonomous} または {@code heteronomous} なら {@link Boolean#TRUE}, それ以外なら {@link Boolean#FALSE} を返す.
 	 * @param completionHandler the completion handler
@@ -250,6 +286,9 @@ public class BudoEmulator extends AbstractVerticle {
 	}
 
 	/**
+	 * Converts APIS DEAL object to ancient BUDO system's Power Sharing information.
+	 * @param deal DEAL object
+	 * @return Power Sharing information {@link JsonObject} belonging to ancient BUDO system era
 	 * APIS の DEAL オブジェクトからいにしえの BUDO システム時代の融通情報に変換する.
 	 * @param deal DEAL オブジェクト
 	 * @return いにしえの BUDO システム時代の融通情報 {@link JsonObject}
