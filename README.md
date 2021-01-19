@@ -76,7 +76,7 @@ $ cd apis-web
 $ mvn javadoc:javadoc  
 ```  
 
-The API specification is created in apis-main/target/site/apidocs/.  
+The API specification is created in apis-web/target/site/apidocs/.  
 
 
 ## License
