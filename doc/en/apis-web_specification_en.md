@@ -921,10 +921,6 @@ The recommended operating system specifications for the IoT Board used for apis-
 <td>Operating software</td>
 <td>AdoptOpenJDK (32/64-bit)</td>
 </tr>
-<tr class="odd">
-<td>Open source software license</td>
-<td>To prevent the effects of copyleft licenses such as GPL, an operating system that has open source software and apis-web in one execution file is prohibited (e.g. a real-time operating system).</td>
-</tr>
 <tr class="even">
 <td rowspan="5">Others</td>
 <td>Ability to automatically execute apis-web and other software when the operating system starts up.</td>
